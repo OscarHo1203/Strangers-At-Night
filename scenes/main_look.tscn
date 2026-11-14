@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://wkx231kbn2qq"]
+
+[ext_resource type="PackedScene" uid="uid://nd185jophnh6" path="res://scenes/food.tscn" id="1_3adnm"]
+[ext_resource type="Script" uid="uid://dn0wfa2piybay" path="res://scenes/main_look.gd" id="1_s306q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s306q"]
+sky_top_color = Color(0.44194114, 0.4692304, 0.2783747, 1)
+sky_horizon_color = Color(0.6793003, 0.6783726, 0.6216587, 1)
+ground_horizon_color = Color(0.6793003, 0.6783726, 0.6216587, 1)
+energy_multiplier = 0.45
+
+[sub_resource type="Sky" id="Sky_8ulld"]
+sky_material = SubResource("ProceduralSkyMaterial_s306q")
+
+[sub_resource type="Environment" id="Environment_pnu5k"]
+background_mode = 2
+sky = SubResource("Sky_8ulld")
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=657032770]
+script = ExtResource("1_s306q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=429739297]
+transform = Transform3D(-0.23344539, -0.9723699, -4.250364e-08, 0, -4.371139e-08, 1, -0.9723699, 0.23344539, 1.0204222e-08, 0, 0, 0)
+light_color = Color(0.78311425, 0.6504886, 0.0032763565, 1)
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1771836391]
+environment = SubResource("Environment_pnu5k")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1454646324]
+transform = Transform3D(1, 0, 0, 0, -0.034899462, 0.99939084, 0, -0.99939084, -0.034899462, 0, 4.5993233, 6.3043385)
+light_color = Color(0.8332076, 0.43707114, 0.103105284, 1)
+light_energy = 9.427
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+
+[node name="Untitled" parent="." unique_id=1706272397 instance=ExtResource("1_3adnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19270921, 0, 3.4522657)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1195804053]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1965754562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2697854, 1.3832226, 8.322681)
