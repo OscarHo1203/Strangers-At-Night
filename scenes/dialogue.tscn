@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://tddhvql1gvxt"]
+
+[ext_resource type="FontFile" uid="uid://b5vhmg0dxb45e" path="res://Font/thorn-serif/ThornSerif-Libre.otf" id="1_bfpow"]
+[ext_resource type="Script" uid="uid://phss4da50e8g" path="res://scripts/role_reveal.gd" id="1_jwyou"]
+[ext_resource type="Script" uid="uid://cujb0ma0g5c4j" path="res://scripts/dialogue_reveal.gd" id="2_3n4vj"]
+
+[node name="Node2D" type="Node2D" unique_id=1245189681]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=414385529]
+offset_left = 438.0
+offset_top = 845.0
+offset_right = 1503.0
+offset_bottom = 976.0
+color = Color(0.7736236, 0.7300826, 0.6938717, 1)
+
+[node name="Role" type="RichTextLabel" parent="." unique_id=52633142]
+offset_left = 451.0
+offset_top = 846.0
+offset_right = 606.0
+offset_bottom = 903.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_bfpow")
+theme_override_font_sizes/normal_font_size = 20
+text = "ROLE:"
+script = ExtResource("1_jwyou")
+
+[node name="Dialogue" type="RichTextLabel" parent="." unique_id=2031028953]
+offset_left = 461.0
+offset_top = 914.0
+offset_right = 1481.0
+offset_bottom = 971.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_bfpow")
+theme_override_font_sizes/normal_font_size = 20
+text = "DIALOUGE:"
+script = ExtResource("2_3n4vj")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bmgim3wuv3c41" path="res://scenes/shop.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bv2pk0206cfw5" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://do8qpc5qh61wa" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://tddhvql1gvxt" path="res://scenes/dialogue.tscn" id="4_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -78,3 +79,5 @@ shape = SubResource("BoxShape3D_jyhfs")
 offset_right = 478.0
 offset_bottom = 176.0
 theme_override_font_sizes/normal_font_size = 67
+
+[node name="Node2D" parent="." unique_id=1245189681 instance=ExtResource("4_jyhfs")]
