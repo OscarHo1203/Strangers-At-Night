@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bcmp6q8o6gn71"]
 
 [ext_resource type="PackedScene" uid="uid://bmgim3wuv3c41" path="res://scenes/shop.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bv2pk0206cfw5" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://do8qpc5qh61wa" path="res://scenes/player.tscn" id="2_0wfyh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
@@ -17,7 +18,26 @@ background_mode = 2
 sky = SubResource("Sky_sugp2")
 glow_enabled = true
 
+[sub_resource type="BoxMesh" id="BoxMesh_i1ro6"]
+size = Vector3(1, 1, 4.109375)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy4b6"]
+albedo_color = Color(0.47397572, 0.47397572, 0.47397572, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wfyh"]
+size = Vector3(1, 6.401245, 1.3361816)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fjla"]
+albedo_color = Color(0.6421651, 0.28833643, 0.24447602, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(1, 6.401245, 1.3361816)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
+size = Vector3(1, 1, 4.109375)
+
 [node name="Node3D" type="Node3D" unique_id=877832514]
+script = ExtResource("1_sugp2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=833716559]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -29,7 +49,32 @@ shadow_enabled = true
 environment = SubResource("Environment_jyhfs")
 
 [node name="Player" parent="." unique_id=1365463088 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(6.235, 0, 0, 0, 6.235, 0, 0, 0, 6.235, 13.543143, 18.226103, 145.83853)
+transform = Transform3D(6.235, 0, 0, 0, 6.235, 0, 0, 0, 6.235, 0.34621048, 7.2012043, 151.84045)
 
 [node name="shop" parent="." unique_id=1143130914 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9884763, 0, 75.51721)
+
+[node name="Broom" type="MeshInstance3D" parent="." unique_id=1910676634]
+transform = Transform3D(0.8509931, -0.5251768, 0, 0.5251768, 0.8509931, 0, 0, 0, 1, -5.921209, 0.93432856, 166.13713)
+mesh = SubResource("BoxMesh_i1ro6")
+surface_material_override/0 = SubResource("StandardMaterial3D_uy4b6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Broom" unique_id=2061398015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0826273, 3.7044368, -0.18493652)
+mesh = SubResource("BoxMesh_0wfyh")
+surface_material_override/0 = SubResource("StandardMaterial3D_7fjla")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Broom/MeshInstance3D2" unique_id=2060224710]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Broom/MeshInstance3D2/StaticBody3D" unique_id=659854363]
+shape = SubResource("BoxShape3D_sugp2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Broom" unique_id=57901959]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Broom/StaticBody3D" unique_id=496282352]
+shape = SubResource("BoxShape3D_jyhfs")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=801050526]
+offset_right = 478.0
+offset_bottom = 176.0
+theme_override_font_sizes/normal_font_size = 67

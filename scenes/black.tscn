@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://vsqae6hu2xfm"]
+
+[ext_resource type="AudioStream" uid="uid://ctyuv80d84ug6" path="res://audios/radio.ogg" id="1_jq5d3"]
+
+[node name="Node2D" type="Node2D" unique_id=103589580]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1238768897]
+offset_left = -365.0
+offset_top = -165.0
+offset_right = 2303.0
+offset_bottom = 1254.0
+color = Color(0, 0, 0, 1)
+
+[node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=1191626529]
+position = Vector2(864, 681)
+stream = ExtResource("1_jq5d3")
+autoplay = true

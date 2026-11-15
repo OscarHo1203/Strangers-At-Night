@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://diiver7fgspup"]
+
+[ext_resource type="PackedScene" uid="uid://b4pp1q7tc1x81" path="res://scenes/shop.glb" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://b6vr3yeoro2h5" path="res://scripts/main_menu.gd" id="2_bqqt6"]
+[ext_resource type="FontFile" uid="uid://hfp4cx7bnfsy" path="res://Font/thorn-serif/ThornSerif-Libre.ttf" id="2_ekxnf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bqqt6"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.19414508, 0.18639508, 0.17739508, 1)
+ground_horizon_color = Color(0.19414508, 0.18639508, 0.17739508, 1)
+energy_multiplier = 0.45
+
+[sub_resource type="Sky" id="Sky_wu84c"]
+sky_material = SubResource("ProceduralSkyMaterial_bqqt6")
+
+[sub_resource type="Environment" id="Environment_8ln24"]
+background_mode = 2
+sky = SubResource("Sky_wu84c")
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfvoa"]
+size = Vector3(14.260775, 38.312595, 2.2306786)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44xle"]
+size = Vector3(16.836441, 38.312595, 2.2477684)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_heatd"]
+size = Vector3(0.001, 38.312595, 62.369938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1v8qu"]
+size = Vector3(41.853336, 0.001, 62.369938)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24it5"]
+size = Vector3(924.71857, 0.001, 227.23697)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7mqwv"]
+size = Vector3(41.853336, 38.312595, 0.001)
+
+[sub_resource type="Animation" id="Animation_l6cm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8.047888, 7.865265, 36.235825)]
+}
+
+[sub_resource type="Animation" id="Animation_ekxnf"]
+resource_name = "amba"
+length = 120.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 120),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-8.047888, 7.865265, 36.235825), Vector3(-8.047888, 7.865265, 75.81966)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqqt6"]
+_data = {
+&"RESET": SubResource("Animation_l6cm7"),
+&"amba": SubResource("Animation_ekxnf")
+}
+
+[node name="shop" unique_id=1143130914 instance=ExtResource("1_l6cm7")]
+script = ExtResource("2_bqqt6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0" unique_id=1764558987]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0, 0, 0, 1)
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1" unique_id=2074710204]
+environment = SubResource("Environment_8ln24")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Front wall" parent_id_path=PackedInt32Array(544398803) index="0" unique_id=1383378031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.617584, 19.156298, 31.601357)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Front wall/StaticBody3D" index="0" unique_id=1455726385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.79628, 0, 0.09852791)
+shape = SubResource("BoxShape3D_xfvoa")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Front wall/StaticBody3D" index="1" unique_id=1008179477]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.530406, 0, 0.10707283)
+shape = SubResource("BoxShape3D_44xle")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LEft" parent_id_path=PackedInt32Array(1241876686) index="0" unique_id=1037272634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.544258, 19.156298, 63.80314)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LEft/StaticBody3D" index="0" unique_id=777833719]
+shape = SubResource("BoxShape3D_heatd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" parent_id_path=PackedInt32Array(1937967919) index="0" unique_id=798189078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.617584, 5e-06, 63.80314)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" index="0" unique_id=1893288218]
+shape = SubResource("BoxShape3D_1v8qu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WOrld ground" parent_id_path=PackedInt32Array(347681974) index="0" unique_id=1243818996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.798615, 5e-06, -0.22612762)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WOrld ground/StaticBody3D" index="0" unique_id=778478590]
+shape = SubResource("BoxShape3D_24it5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Back wall" parent_id_path=PackedInt32Array(382999755) index="0" unique_id=855761171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.617584, 19.156298, 94.98811)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Back wall/StaticBody3D" index="0" unique_id=1313999416]
+shape = SubResource("BoxShape3D_7mqwv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="34" unique_id=128100022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.434086, 71.096725)
+light_energy = 12.5
+omni_range = 40.521385
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="35" unique_id=1802775418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.434086, 43.255424)
+light_energy = 12.5
+omni_range = 40.521385
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="36" unique_id=797942325]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, 22.940462, 20.841303, -98.23853)
+light_energy = 25.0
+spot_range = 45.908253
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="37" unique_id=785804714]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, -20.599562, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="." index="38" unique_id=1751971561]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, -54.395355, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="." index="39" unique_id=118357997]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, -84.9626, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="." index="40" unique_id=1599097710]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, -116.6975, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="." index="41" unique_id=1507119379]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, -149.42563, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="." index="42" unique_id=116899171]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, -179.8667, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="." index="43" unique_id=515736635]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, 60.00638, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="." index="44" unique_id=503487709]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, 100.64961, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="." index="45" unique_id=1271420795]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, 137.77568, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="." index="46" unique_id=172304688]
+transform = Transform3D(1, 0, 0, 0, -0.35307297, 0.9355958, 0, -0.9355958, -0.35307297, 177.00282, 20.841303, -98.23853)
+light_energy = 35.0
+spot_range = 45.908253
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." index="47" unique_id=219441450]
+transform = Transform3D(-0.8980699, 0.41152444, 0.15530007, 0.17299195, 0.00583904, 0.98490596, 0.40440604, 0.91138005, -0.07643428, -20.599562, 20.841303, 14.15321)
+light_energy = 35.0
+spot_range = 30.682718
+spot_angle = 40.07562
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="." index="48" unique_id=1146689309]
+transform = Transform3D(-0.8980699, 0.41152442, 0.15530007, 0.17299195, 0.005839045, 0.98490596, 0.40440604, 0.91138005, -0.07643428, 6.85437, 35.27328, 24.000605)
+light_energy = 35.0
+spot_range = 30.682718
+spot_angle = 40.07562
+
+[node name="Camera3D" type="Camera3D" parent="." index="151" unique_id=1111940372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.047888, 7.865265, 36.235825)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="152" unique_id=533101415]
+libraries/ = SubResource("AnimationLibrary_bqqt6")
+
+[node name="Control" type="Control" parent="." index="153" unique_id=552607068]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control" index="0" unique_id=2070700884]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -51.0
+offset_right = 179.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 67
+text = "PLAY"
+
+[node name="Button2" type="Button" parent="Control" index="1" unique_id=1007365969]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = 103.0
+offset_right = 181.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 67
+text = "EXIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" index="2" unique_id=937244539]
+layout_mode = 0
+offset_left = 589.0
+offset_top = 359.0
+offset_right = 1354.0
+offset_bottom = 504.0
+theme_override_fonts/normal_font = ExtResource("2_ekxnf")
+theme_override_font_sizes/normal_font_size = 106
+text = "A STRANGER"
+horizontal_alignment = 1
+vertical_alignment = 1

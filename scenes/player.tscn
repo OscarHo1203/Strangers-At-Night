@@ -1,12 +1,50 @@
 [gd_scene format=3 uid="uid://do8qpc5qh61wa"]
 
 [ext_resource type="Script" uid="uid://bllblxpssgblf" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="AudioStream" uid="uid://c4ka8mbcci3jy" path="res://audios/walking.mp3" id="2_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1ro6"]
 radius = 0.34570313
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_uy4b6"]
 radius = 0.3383789
+
+[sub_resource type="Animation" id="Animation_g2els"]
+resource_name = "Camera Shake"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.034906585), Vector3(0, 0, 0.034906585)]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
+_data = {
+&"Camera Shake": SubResource("Animation_g2els"),
+&"RESET": SubResource("Animation_qhqgy")
+}
 
 [node name="Node3D" type="CharacterBody3D" unique_id=1365463088]
 collision_layer = 2
@@ -18,5 +56,13 @@ shape = SubResource("CapsuleShape3D_i1ro6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1206981495]
 mesh = SubResource("CapsuleMesh_uy4b6")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=436598086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52763104, 0.087910295)
+[node name="Walking" type="AudioStreamPlayer" parent="." unique_id=1335466488]
+stream = ExtResource("2_g2els")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=696405387]
+libraries/ = SubResource("AnimationLibrary_dqkch")
+
+[node name="Node" type="Node3D" parent="." unique_id=1504251801]
+
+[node name="Camera3D" type="Camera3D" parent="Node" unique_id=436598086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52763104, -0.25044185)
