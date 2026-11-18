@@ -44,11 +44,14 @@ size = Vector3(2.263917, 23.425316, 4.169102)
 [node name="shop" unique_id=1143130914 instance=ExtResource("1_lx5au")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Table" parent_id_path=PackedInt32Array(1088612213) index="0" unique_id=2065401753]
+disable_mode = 1
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table/StaticBody3D" index="0" unique_id=1394039736]
 shape = SubResource("ConcavePolygonShape3D_lx5au")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cabinet_001" parent_id_path=PackedInt32Array(48625911) index="0" unique_id=1863598362]
+disable_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cabinet_001/StaticBody3D" index="0" unique_id=29802883]
 shape = SubResource("ConcavePolygonShape3D_xfvoa")

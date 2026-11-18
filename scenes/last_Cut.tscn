@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://wp6nev4qf1yg"]
+
+[ext_resource type="Script" uid="uid://c0j0ex018c2ly" path="res://scenes/last_cut.gd" id="1_xo8o6"]
+[ext_resource type="AudioStream" uid="uid://3e536dxxpf05" path="res://audios/night-sound-effect-ii-no-copyright-ii-cricket-sound-effect-ii-128-ytshorts.savetube.me.mp3" id="2_enepc"]
+[ext_resource type="VideoStream" uid="uid://2sxegjcnq0gh" path="res://audios/Ending.ogv" id="2_xo8o6"]
+
+[node name="Node2D" type="Control" unique_id=641636697]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xo8o6")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=2146637845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_xo8o6")
+autoplay = true
+expand = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=516986640]
+stream = ExtResource("2_enepc")
+autoplay = true
+parameters/looping = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

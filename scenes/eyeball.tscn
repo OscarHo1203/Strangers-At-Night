@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://i2ku22dgbq3n"]
+
+[ext_resource type="PackedScene" uid="uid://cpwpgqt3yehm1" path="res://models/eyeball.glb" id="1_7eecr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7eecr"]
+radius = 1.0
+
+[node name="eyeball" unique_id=316107933 instance=ExtResource("1_7eecr")]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=583702472]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 5.9604645e-08, -5.9604645e-08, 0)
+shape = SubResource("SphereShape3D_7eecr")

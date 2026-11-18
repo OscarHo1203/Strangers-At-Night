@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="le-festin"
+config/name="Strangers At Night"
+config/version="1.0"
 run/main_scene="uid://diiver7fgspup"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"

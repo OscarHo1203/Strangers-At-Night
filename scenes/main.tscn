@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://hfp4cx7bnfsy" path="res://Font/thorn-serif/ThornSerif-Libre.ttf" id="2_tbgi4"]
 [ext_resource type="AudioStream" uid="uid://3e536dxxpf05" path="res://audios/night-sound-effect-ii-no-copyright-ii-cricket-sound-effect-ii-128-ytshorts.savetube.me.mp3" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da51yuhckuxps" path="res://scenes/customer.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://i2ku22dgbq3n" path="res://scenes/eyeball.tscn" id="7_o6xl0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -65,6 +66,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("customer2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.09, 3.09, 3.09)]
+}
+
+[sub_resource type="Animation" id="Animation_tipki"]
+resource_name = "siz"
+length = 4.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("customer2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.09, 3.09, 3.09), Vector3(5.865, 5.865, 5.865)]
+}
 
 [sub_resource type="Animation" id="Animation_o6xl0"]
 resource_name = "walk"
@@ -97,6 +126,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
 _data = {
 &"RESET": SubResource("Animation_tefeu"),
+&"siz": SubResource("Animation_tipki"),
 &"walk": SubResource("Animation_o6xl0")
 }
 
@@ -155,7 +185,7 @@ shadow_enabled = true
 environment = SubResource("Environment_jyhfs")
 
 [node name="Player" parent="." unique_id=1365463088 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(6.235, 0, 0, 0, 6.235, 0, 0, 0, 6.235, 0.34621048, 5.8751373, 151.84045)
+transform = Transform3D(6.235, 0, 0, 0, 6.235, 0, 0, 0, 6.235, 0.1469779, 5.8751373, 159.184)
 
 [node name="shop" parent="." unique_id=1143130914 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9884763, 0, 75.51721)
@@ -191,8 +221,29 @@ transform = Transform3D(3.09, 0, 0, 0, 3.09, 0, 0, 0, 3.09, 16.606493, 0.0005049
 [node name="customer2" parent="." unique_id=1894957556 instance=ExtResource("6_tefeu")]
 transform = Transform3D(3.09, 0, 0, 0, 3.09, 0, 0, 0, 3.09, -0.034379005, 0.00050497055, 138.6778)
 
+[node name="Head" parent="customer2/RootNode/HumanArmature/Skeleton3D" parent_id_path=PackedInt32Array(1894957556, 574322224) index="1" unique_id=183162298]
+transform = Transform3D(0.99995816, -0.0034587434, 0.008436464, 0.0067968867, -0.33399236, -0.9425513, 0.006077757, 0.9425692, -0.33395478, 3.4135115e-07, -0.0008290125, 0.04223112)
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="customer2/RootNode/HumanArmature/Skeleton3D" parent_id_path=PackedInt32Array(1894957556, 574322224) index="12" unique_id=661502260]
+target_node = NodePath("../../../../../Player")
+bone_name = "Head"
+bone = 7
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 3.1415927
+primary_damp_threshold = 1.0
+secondary_limit_angle = 6.2831855
+secondary_damp_threshold = 1.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1063553675]
 libraries/ = SubResource("AnimationLibrary_tipki")
 
+[node name="eyeball" parent="." unique_id=316107933 instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5302675, 12.977713, 143.70901)
+
+[node name="Sphere" parent="eyeball" index="1" unique_id=338725476]
+transform = Transform3D(-0.99976254, 0.021791967, 0, -0.007066606, -0.32419872, -0.9459626, -0.020614386, -0.94573796, 0.32427573, 0, 0, 0)
+
 [editable path="customer"]
 [editable path="customer2"]
+[editable path="eyeball"]
