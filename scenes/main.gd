@@ -52,6 +52,7 @@ func start_event() -> void:
 func stage_2() -> void:
 	customer.visible = true
 	animation_player.play("walk")
+	print("It walks")
 	await animation_player.animation_finished
 	await stage_3()
 

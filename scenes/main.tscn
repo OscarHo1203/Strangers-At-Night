@@ -241,7 +241,7 @@ libraries/ = SubResource("AnimationLibrary_tipki")
 [node name="eyeball" parent="." unique_id=316107933 instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5302675, 12.977713, 143.70901)
 
-[node name="Sphere" parent="eyeball" index="1" unique_id=338725476]
+[node name="Sphere" parent="eyeball" index="1" unique_id=1567052685]
 transform = Transform3D(-0.99976254, 0.021791967, 0, -0.007066606, -0.32419872, -0.9459626, -0.020614386, -0.94573796, 0.32427573, 0, 0, 0)
 
 [editable path="customer"]
