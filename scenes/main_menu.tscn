@@ -218,14 +218,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -168.0
-offset_top = -51.0
-offset_right = 179.0
-offset_bottom = 54.0
+offset_left = -335.0
+offset_top = -73.0
+offset_right = 335.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 67
+theme_override_font_sizes/font_size = 128
 text = "PLAY"
 
 [node name="Button2" type="Button" parent="Control" index="1" unique_id=1007365969]
@@ -235,24 +235,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -166.0
-offset_top = 103.0
-offset_right = 181.0
-offset_bottom = 208.0
+offset_left = -327.0
+offset_top = 197.0
+offset_right = 336.0
+offset_bottom = 417.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_ekxnf")
-theme_override_font_sizes/font_size = 67
+theme_override_font_sizes/font_size = 128
 text = "EXIT"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control" index="2" unique_id=937244539]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" index="2" unique_id=1139832697]
 layout_mode = 0
-offset_left = 589.0
-offset_top = 359.0
-offset_right = 1354.0
-offset_bottom = 504.0
+offset_left = 194.0
+offset_top = 198.0
+offset_right = 1789.0
+offset_bottom = 438.0
 theme_override_fonts/normal_font = ExtResource("2_ekxnf")
-theme_override_font_sizes/normal_font_size = 106
-text = "A STRANGER"
+theme_override_font_sizes/normal_font_size = 139
+text = "STRANGER AT NIGHT"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]

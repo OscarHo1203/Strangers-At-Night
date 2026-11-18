@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bmgim3wuv3c41" path="res://scenes/shop.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://bv2pk0206cfw5" path="res://scenes/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://do8qpc5qh61wa" path="res://scenes/player.tscn" id="2_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://tddhvql1gvxt" path="res://scenes/dialogue.tscn" id="4_jyhfs"]
+[ext_resource type="FontFile" uid="uid://hfp4cx7bnfsy" path="res://Font/thorn-serif/ThornSerif-Libre.ttf" id="2_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://3e536dxxpf05" path="res://audios/night-sound-effect-ii-no-copyright-ii-cricket-sound-effect-ii-128-ytshorts.savetube.me.mp3" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://da51yuhckuxps" path="res://scenes/customer.tscn" id="6_tefeu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -37,8 +39,111 @@ size = Vector3(1, 6.401245, 1.3361816)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
 size = Vector3(1, 1, 4.109375)
 
+[sub_resource type="Animation" id="Animation_tefeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("customer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(16.606493, 0.00050497055, 30.10199)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("customer/AnimatableBody3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "walk"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("customer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(16.606493, 0.00050497055, 30.10199), Vector3(16.606493, 0.00050497055, 100.08323)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("customer/AnimatableBody3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
+_data = {
+&"RESET": SubResource("Animation_tefeu"),
+&"walk": SubResource("Animation_o6xl0")
+}
+
 [node name="Node3D" type="Node3D" unique_id=877832514]
 script = ExtResource("1_sugp2")
+
+[node name="Control" type="Control" parent="." unique_id=692297013]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1314661914]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 862.0
+offset_right = 1615.0
+offset_bottom = 1050.0
+mouse_filter = 2
+color = Color(0.58833456, 0.5858954, 0.57005805, 1)
+
+[node name="Role" type="RichTextLabel" parent="Control" unique_id=801050526]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 874.0
+offset_right = 802.0
+offset_bottom = 966.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_tbgi4")
+theme_override_font_sizes/normal_font_size = 51
+text = "ROLE"
+
+[node name="Dialogue" type="RichTextLabel" parent="Control" unique_id=1847268109]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 945.0
+offset_right = 1579.0
+offset_bottom = 1037.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_tbgi4")
+theme_override_font_sizes/normal_font_size = 33
+text = "Dialogue"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=833716559]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -50,7 +155,7 @@ shadow_enabled = true
 environment = SubResource("Environment_jyhfs")
 
 [node name="Player" parent="." unique_id=1365463088 instance=ExtResource("2_0wfyh")]
-transform = Transform3D(6.235, 0, 0, 0, 6.235, 0, 0, 0, 6.235, 0.34621048, 7.2012043, 151.84045)
+transform = Transform3D(6.235, 0, 0, 0, 6.235, 0, 0, 0, 6.235, 0.34621048, 5.8751373, 151.84045)
 
 [node name="shop" parent="." unique_id=1143130914 instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9884763, 0, 75.51721)
@@ -75,9 +180,15 @@ shape = SubResource("BoxShape3D_sugp2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Broom/StaticBody3D" unique_id=496282352]
 shape = SubResource("BoxShape3D_jyhfs")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=801050526]
-offset_right = 478.0
-offset_bottom = 176.0
-theme_override_font_sizes/normal_font_size = 67
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1578870969]
+stream = ExtResource("4_jyhfs")
+autoplay = true
+parameters/looping = true
 
-[node name="Node2D" parent="." unique_id=1245189681 instance=ExtResource("4_jyhfs")]
+[node name="customer" parent="." unique_id=521387367 instance=ExtResource("6_tefeu")]
+transform = Transform3D(3.09, 0, 0, 0, 3.09, 0, 0, 0, 3.09, 16.606493, 0.00050497055, 30.10199)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1063553675]
+libraries/ = SubResource("AnimationLibrary_tipki")
+
+[editable path="customer"]

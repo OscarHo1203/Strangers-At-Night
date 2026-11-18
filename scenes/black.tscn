@@ -1,17 +1,26 @@
 [gd_scene format=3 uid="uid://vsqae6hu2xfm"]
 
-[ext_resource type="AudioStream" uid="uid://ctyuv80d84ug6" path="res://audios/radio.ogg" id="1_jq5d3"]
+[ext_resource type="Script" uid="uid://0ij6wu1s0hks" path="res://scenes/black.gd" id="1_qgcgv"]
+[ext_resource type="VideoStream" uid="uid://bsnajnyhu8cmn" path="res://audios/Intro.ogv" id="2_qgcgv"]
 
-[node name="Node2D" type="Node2D" unique_id=103589580]
+[node name="Node2D" type="Node2D" unique_id=154850773]
+script = ExtResource("1_qgcgv")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1238768897]
-offset_left = -365.0
-offset_top = -165.0
-offset_right = 2303.0
-offset_bottom = 1254.0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=437189148]
+offset_right = 1975.0
+offset_bottom = 1200.0
 color = Color(0, 0, 0, 1)
 
-[node name="Radio" type="AudioStreamPlayer2D" parent="." unique_id=1191626529]
-position = Vector2(864, 681)
-stream = ExtResource("1_jq5d3")
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=80344167]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+offset_right = 1920.0
+offset_bottom = 1096.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_qgcgv")
 autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

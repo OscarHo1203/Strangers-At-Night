@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://da51yuhckuxps"]
+
+[ext_resource type="PackedScene" uid="uid://cw1x46u8wdtfn" path="res://models/Man by Quaternius - HMnuH5geEG.glb" id="1_ktfjk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i1ro6"]
+radius = 0.8100586
+height = 5.4523926
+
+[node name="customer" unique_id=521387367 instance=ExtResource("1_ktfjk")]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." index="2" unique_id=1988464467]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" index="0" unique_id=2092220186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4621243, 0)
+shape = SubResource("CapsuleShape3D_i1ro6")
