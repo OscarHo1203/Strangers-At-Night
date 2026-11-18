@@ -1,0 +1,54 @@
+
+name: Deploy Game to itch.io
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.4.1
+          use-dotnet: false
+          include-templates: true
+
+      - name: Import Project
+        run: godot --headless --editor --import
+
+      - name: Export Windows
+        run: |
+          mkdir -p build/windows
+          godot --headless --export-release "Windows Desktop" build/windows/SAN.exe
+
+      - name: Export Linux
+        run: |
+          mkdir -p build/linux
+          godot --headless --export-release "Linux" build/linux/SAN.x86_64
+
+      - name: Install Butler
+        run: |
+          curl -sSL -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip -q butler.zip
+          chmod +x butler
+
+      - name: Upload Windows
+        env:
+          BUTLER_API_KEY: uGos9XfvsnCvoYd64kE6PQWGN3L3ozKcnKExbdIF
+        run: |
+          ./butler push build/windows YOUR_USERNAME/YOUR_GAME_SLUG:windows
+
+      - name: Upload Linux
+        env:
+          BUTLER_API_KEY: uGos9XfvsnCvoYd64kE6PQWGN3L3ozKcnKExbdIF
+        run: |
+          ./butler push build/linux YOUR_USERNAME/YOUR_GAME_SLUG:linux
+
