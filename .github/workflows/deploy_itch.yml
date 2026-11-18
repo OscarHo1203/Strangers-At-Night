@@ -4,7 +4,7 @@ name: Deploy Game to itch.io
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -44,11 +44,12 @@ jobs:
         env:
           BUTLER_API_KEY: uGos9XfvsnCvoYd64kE6PQWGN3L3ozKcnKExbdIF
         run: |
-          ./butler push build/windows YOUR_USERNAME/YOUR_GAME_SLUG:windows
+          ./butler push build/windows oscarh1/stranger-at-night:windows
 
       - name: Upload Linux
         env:
           BUTLER_API_KEY: uGos9XfvsnCvoYd64kE6PQWGN3L3ozKcnKExbdIF
         run: |
-          ./butler push build/linux YOUR_USERNAME/YOUR_GAME_SLUG:linux
+          ./butler push build/linux oscarh1/stranger-at-night:linux
+
 
