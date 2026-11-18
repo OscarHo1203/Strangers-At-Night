@@ -4,11 +4,18 @@ extends Node3D
 @onready var dialogue: RichTextLabel = $Control/Dialogue
 @onready var control: Control = $Control
 @onready var customer: Node3D = $customer
+@onready var collision_shape_3d1: CollisionShape3D = $customer/AnimatableBody3D/CollisionShape3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var customer_2: Node3D = $customer2
+@onready var collision_shape_3d2: CollisionShape3D = $customer2/AnimatableBody3D/CollisionShape3D
+
 
 
 func _ready() -> void:
 	customer.visible = false
+	collision_shape_3d1.set_deferred("disabled", true)
+	customer_2.visible = false
+	collision_shape_3d2.set_deferred("disabled", true)
 	control.visible = false
 	start_event()
 
@@ -17,11 +24,9 @@ func change_role_dialogue(role_text: String, dialogue_text: String) -> void:
 	role.text = role_text
 	dialogue.text = dialogue_text
 
-
 func show_dialogue(role_text: String, dialogue_text: String) -> void:
 	control.visible = true
 	change_role_dialogue(role_text, dialogue_text)
-
 
 func hide_dialogue() -> void:
 	await get_tree().create_timer(3.0).timeout
@@ -55,3 +60,4 @@ func stage_3() -> void:
 	
 	show_dialogue("A", "Just be quick, and get in.")
 	await hide_dialogue()
+	customer.free()

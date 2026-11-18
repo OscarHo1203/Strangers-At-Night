@@ -188,7 +188,11 @@ parameters/looping = true
 [node name="customer" parent="." unique_id=521387367 instance=ExtResource("6_tefeu")]
 transform = Transform3D(3.09, 0, 0, 0, 3.09, 0, 0, 0, 3.09, 16.606493, 0.00050497055, 30.10199)
 
+[node name="customer2" parent="." unique_id=1894957556 instance=ExtResource("6_tefeu")]
+transform = Transform3D(3.09, 0, 0, 0, 3.09, 0, 0, 0, 3.09, -0.034379005, 0.00050497055, 138.6778)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1063553675]
 libraries/ = SubResource("AnimationLibrary_tipki")
 
 [editable path="customer"]
+[editable path="customer2"]
