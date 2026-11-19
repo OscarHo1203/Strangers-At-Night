@@ -41,7 +41,7 @@ func hide_dialogue() -> void:
 # STAGE 1: THE INTRODUCTION
 func start_event() -> void:
 	show_dialogue(
-		"A",
+		"Cashier",
         "It can't be serious. Why would anyone want to ever accept a stranger into their house?"
 	)
 	await hide_dialogue()
@@ -58,13 +58,13 @@ func stage_2() -> void:
 
 # STAGE 3: GREETING
 func stage_3() -> void:
-	show_dialogue("A", "Hello ?")
+	show_dialogue("Cashier", "Hello ?")
 	await hide_dialogue()
 	
-	show_dialogue("A", "The store's still open.")
+	show_dialogue("Cashier", "The store's still open.")
 	await hide_dialogue()
 	
-	show_dialogue("A", "Just be quick, and get in.")
+	show_dialogue("Cashier", "Just be quick, and get in.")
 	await hide_dialogue()
 
 	var camera := get_viewport().get_camera_3d()
@@ -82,7 +82,7 @@ func stage_3() -> void:
 	show_dialogue("Customer", "Just.. cigar…and a…bottle…")
 	await hide_dialogue()
 	
-	show_dialogue("A", "That'll be $2.50")
+	show_dialogue("Cashier", "That'll be $2.50")
 	await hide_dialogue()
 	
 	await get_tree().create_timer(3.0).timeout
@@ -94,7 +94,7 @@ func stage_3() -> void:
 
 func stage_4():
 	animation_player.play("siz")
-	show_dialogue("A", "Wha- What the fuck, dude ?!")
+	show_dialogue("Cashier", "Wha- What the fuck, dude ?!")
 	await animation_player.animation_finished
 	await hide_dialogue()
 	get_tree().change_scene_to_file("res://scenes/last_Cut.tscn")
