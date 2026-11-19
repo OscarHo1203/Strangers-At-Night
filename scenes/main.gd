@@ -3,6 +3,7 @@ extends Node3D
 @onready var role: RichTextLabel = $Control/Role
 @onready var dialogue: RichTextLabel = $Control/Dialogue
 @onready var control: Control = $Control
+@onready var color_rect: ColorRect = $Control/ColorRect
 @onready var customer: Node3D = $customer
 @onready var collision_shape_3d1: CollisionShape3D = $customer/AnimatableBody3D/CollisionShape3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -40,6 +41,7 @@ func hide_dialogue() -> void:
 
 # STAGE 1: THE INTRODUCTION
 func start_event() -> void:
+	color_rect.color = Color(0.353, 0.493, 0.507, 1.0)
 	show_dialogue(
 		"Cashier",
         "It can't be serious. Why would anyone want to ever accept a stranger into their house?"
@@ -58,12 +60,15 @@ func stage_2() -> void:
 
 # STAGE 3: GREETING
 func stage_3() -> void:
+	color_rect.color = Color(0.353, 0.493, 0.507, 1.0)
 	show_dialogue("Cashier", "Hello ?")
 	await hide_dialogue()
 	
+	color_rect.color = Color(0.353, 0.493, 0.507, 1.0)
 	show_dialogue("Cashier", "The store's still open.")
 	await hide_dialogue()
 	
+	color_rect.color = Color(0.353, 0.493, 0.507, 1.0)
 	show_dialogue("Cashier", "Just be quick, and get in.")
 	await hide_dialogue()
 
@@ -79,9 +84,12 @@ func stage_3() -> void:
 	collision_shape_3d2.set_deferred("disabled", false)
 
 	await get_tree().create_timer(3.0).timeout
+	color_rect.color = Color(0.712, 0.312, 0.247, 1.0)
 	show_dialogue("Customer", "Just.. cigar…and a…bottle…")
+	
 	await hide_dialogue()
 	
+	color_rect.color = Color(0.353, 0.493, 0.507, 1.0)
 	show_dialogue("Cashier", "That'll be $2.50")
 	await hide_dialogue()
 	
@@ -94,6 +102,7 @@ func stage_3() -> void:
 
 func stage_4():
 	animation_player.play("siz")
+	color_rect.color = Color(0.353, 0.493, 0.507, 1.0)
 	show_dialogue("Cashier", "Wha- What the fuck, dude ?!")
 	await animation_player.animation_finished
 	await hide_dialogue()
